@@ -5,36 +5,8 @@ set nocompatible
 "Use bash not sh for advanced features like color
 set shell=bash
 
-"======== MinTTY Mouse Wheel ======"
-
-map <Esc>Oa <Up>
-map <Esc>Ob <Down>
-map <Esc>[1;2a <PageUp>
-map <Esc>[1;2b <PageDown>
-
-"======== Java Shortcuts ==========="
-
-"Import the class under the cursor with <leader>i.
-nmap <silent> <buffer> <leader>i :JavaImport<cr>
-
-"Search for the javadocs of the element under the cursor with <leader>d.
-nmap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
-
-"Perform a context sensitive search of the element under the cursor with <enter>.
-nmap <silent> <buffer> <leader><cr> :JavaSearchContext<cr>
-
-nmap <Leader>pi <C-R>:call JavaPackageAndImport()<CR>
-
-function! JavaPackageAndImport()
-    let filename = expand("%:h")
-    echo filename
-    let packagePath = substitute(filename, '\v(src|tests)/(.*)$', '\2', "g")
-    let package = substitute(packagePath, '/', '.', "g")
-    let text =  "import ".package.".*;\n"."package ".package.";\n"
-    return text
-endfunction
-
-"======== End Java Shortcuts ======="
+"initialize bundles in .vim/bundle
+call pathogen#runtime_append_all_bundles()
 
 "======== Keyboard Shortcuts ========"
 
@@ -130,12 +102,6 @@ set scrolloff=3
 :let html_no_pre = 1        "don't wrap everything in <pre>
 
 "==========Ruby Settings==========
-autocmd FileType ruby compiler ruby "not sure if this will interfere with other code
-
-"load/evaluate code to provide completions
-"CARE: will cause code execution
-let g:rubycomplete_buffer_loading = 1
-
 "parse the entire buffer to add a list of classes to autocompletion results
 let g:rubycomplete_classes_in_global = 1
 
