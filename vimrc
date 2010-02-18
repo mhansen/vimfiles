@@ -110,6 +110,9 @@ augroup mkd
     autocmd BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
 augroup END
 
+"json
+au! BufRead,BufNewFile *.json setfiletype json 
+
 "gvim
 if has('gui_running')
     set guioptions-=T "no toolbar
