@@ -15,18 +15,13 @@ nmap <cr> <C-]>
 "go back a tag with backspace
 nmap <bs> <C-t>
 
-"Leader key
-let mapleader = ","
+let mapleader = "," "Leader key
 
-"FuzzyFinder_TextMate
 nmap <Leader>e :FuzzyFinderTextMate<CR>
 
-".vimrc
+"quick .vimrc editing
 nmap <Leader>.e :edit $MYVIMRC<CR>
 nmap <Leader>.s :source $MYVIMRC<CR>
-
-"markdown
-nmap <Leader>mkd :!markdown <C-R>% > <C-R>%.html<CR>
 
 "vimshell keybindings
 nmap <C-W>e :new \| :vimshell bash<CR>
@@ -52,13 +47,9 @@ set showmode
 set ruler
 set laststatus=2
 
-"wrap lines at convenient points
-set linebreak
+set linebreak "wrap lines at convenient points
 
-"give me higher color depth
-set t_Co=256
-
-"awesome color scheme
+set t_Co=256 "give me higher color depth
 colorscheme wombat
 
 "load filetype modes and indent files
@@ -86,9 +77,6 @@ set tabstop=4
 set autoindent
 set smartindent
 set expandtab "expand tabs to spaces
-autocmd FileType make setlocal noexpandtab "makefiles need explicit tab characters	
-autocmd FileType html setlocal shiftwidth=2 
-autocmd FileType html setlocal tabstop=2
 
 "completion settings
 set wildmode=list:longest
@@ -104,14 +92,6 @@ set scrolloff=3
 "==========Ruby Settings==========
 "parse the entire buffer to add a list of classes to autocompletion results
 let g:rubycomplete_classes_in_global = 1
-
-"markdown
-augroup mkd
-    autocmd BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
-augroup END
-
-"json
-au! BufRead,BufNewFile *.json setfiletype json 
 
 "gvim
 if has('gui_running')
