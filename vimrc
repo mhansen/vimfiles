@@ -2,6 +2,7 @@
 "must be first, because it changes other options as a side effect
 set nocompatible
 
+set encoding=utf-8
 "Use bash not sh for advanced features like color
 set shell=bash
 
