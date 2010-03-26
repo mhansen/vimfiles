@@ -97,7 +97,7 @@ let g:rubycomplete_classes_in_global = 1
 "gvim
 if has('gui_running')
     set guioptions-=T "no toolbar
-    set guifont=Consolas:h10:cANSI
+    set guifont=Consolas\ 10
     set guitablabel=(%n%M)\ %f
     set shell=bash
     set shellcmdflag=--login\ -c
