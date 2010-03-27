@@ -115,3 +115,6 @@ map <A-7>  7gt
 map <A-8>  8gt
 map <A-9>  9gt
 map <A-0>  10gt
+
+
+command! Spell setlocal spell spelllang=en_nz
