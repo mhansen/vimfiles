@@ -8,6 +8,12 @@ set shell=bash
 
 "initialize bundles in .vim/bundle
 call pathogen#runtime_append_all_bundles()
+"Note that you need to invoke the pathogen functions before invoking "filetype
+"plugin indent on" if you want it to load ftdetect files. On Debian (and
+"probably other distros), the system vimrc does this early on, so you actually
+"need to 'filetype off' before 'filetype plugin indent on' to force reloading.
+filetype off 
+filetype plugin indent on
 
 "======== Keyboard Shortcuts ========"
 
