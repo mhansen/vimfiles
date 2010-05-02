@@ -1,0 +1,1 @@
+supertab.vba: call delete('/home/moon/.vim/doc/supertab.txt	[[[1"[[["]]]')|call delete('/home/moon/.vim/plugin/supertab.vim')
