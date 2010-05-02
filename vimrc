@@ -56,8 +56,15 @@ set laststatus=2
 
 set linebreak "wrap lines at convenient points
 
-set t_Co=256 "give me higher color depth
-colorscheme wombat
+if &term == "xterm" || &term == "screen-bce"
+    set t_Co=256 "give me higher color depth
+    colorscheme molokai
+elseif &term == "linux"
+    colorscheme default
+else
+  "do stuff for other terminals
+endif
+
 
 "load filetype modes and indent files
 filetype plugin on
