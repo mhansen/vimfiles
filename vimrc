@@ -58,7 +58,7 @@ set linebreak "wrap lines at convenient points
 
 if &term == "xterm" || &term == "screen-bce"
     set t_Co=256 "give me higher color depth
-    colorscheme molokai
+    colorscheme wombat
 elseif &term == "linux"
     colorscheme default
 else
@@ -131,3 +131,14 @@ map <A-0>  10gt
 
 
 command! Spell setlocal spell spelllang=en_nz
+
+" Eclim Settings
+let g:SuperTabDefaultCompletionTypeDiscovery = [
+\ "&completefunc:<c-x><c-u>",
+\ "&omnifunc:<c-x><c-o>",
+\ ]
+let g:SuperTabLongestHighlight = 1
+
+nnoremap <Leader>ji :JavaImport<CR>
+nnoremap <Leader>jd :JavaDocSearch -x declarations<CR>
+nnoremap <Leader>jc :JavaCorrect<CR>
