@@ -162,6 +162,7 @@ map <A-0>  10gt
 
 
 command! Spell setlocal spell spelllang=en_nz
+set dictionary+=/usr/share/dict/british-english
 
 " Eclim Settings
 let g:SuperTabDefaultCompletionTypeDiscovery = [
