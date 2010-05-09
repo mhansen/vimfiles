@@ -6,7 +6,7 @@
 	url = git://github.com/msanders/snipmate.vim.git
 [submodule "bundle/markdown"]
 	path = bundle/markdown
-	url = git://github.com/hallison/vim-markdown.git
+	url = git://github.com/mhansen/vim-markdown.git
 [submodule "bundle/vim-rails"]
 	path = bundle/vim-rails
 	url = git://github.com/tpope/vim-rails.git
@@ -19,6 +19,3 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
-[submodule "bundles/markdown"]
-	path = bundles/markdown
-	url = git://github.com/hallison/vim-markdown.git
