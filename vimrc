@@ -174,3 +174,15 @@ let g:SuperTabLongestHighlight = 1
 nnoremap <Leader>ji :JavaImport<CR>
 nnoremap <Leader>jd :JavaDocSearch -x declarations<CR>
 nnoremap <Leader>jc :JavaCorrect<CR>
+
+" vertically expand the window you move into
+map <C-j> <C-w>j<C-w>_
+map <C-k> <C-w>k<C-w>_
+map <C-h> <C-w>h<C-w>_
+map <C-l> <C-w>l<C-w>_
+
+"restore cursor position (for irb)
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
