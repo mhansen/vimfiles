@@ -87,13 +87,12 @@ set laststatus=2
 
 set linebreak "wrap lines at convenient points
 
-if &term == "xterm" || &term == "screen-bce"
+if &term == "xterm" || &term == "screen-bce" || $term == "builtin-gui"
     set t_Co=256 "give me higher color depth
     colorscheme wombat
-elseif &term == "linux"
+endif
+if &term == "linux"
     colorscheme default
-else
-  "do stuff for other terminals
 endif
 
 
@@ -141,10 +140,8 @@ let g:rubycomplete_classes_in_global = 1
 "gvim
 if has('gui_running')
     set guioptions-=T "no toolbar
-    set guifont=Consolas\ 10
+    set guifont=Monospace\ 8
     set guitablabel=(%n%M)\ %f
-    set shell=bash
-    set shellcmdflag=--login\ -c
     set shellxquote=\"
 endif
 
@@ -164,11 +161,11 @@ map <A-0>  10gt
 command! Spell setlocal spell spelllang=en_nz
 set dictionary+=/usr/share/dict/british-english
 
-" Eclim Settings
-let g:SuperTabDefaultCompletionTypeDiscovery = [
-\ "&completefunc:<c-x><c-u>",
-\ "&omnifunc:<c-x><c-o>",
-\ ]
+let g:SuperTabLongestHighlight = 'context'
+let g:SuperTabContextDefaultCompletionType = '<c-o>'
+" If I use a difference completion type (e.g. <c-x><c-k>),
+" make supertab use that completion type till i close vim
+let g:SuperTabRetainCompletionDuration = 'session'
 let g:SuperTabLongestHighlight = 1
 
 nnoremap <Leader>ji :JavaImport<CR>
