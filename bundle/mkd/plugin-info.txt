@@ -1,0 +1,8 @@
+{
+  "name" : "Markdown",
+  "version" : "dev",
+  "author" : "Hallison Batista <email@hallisonbatista.com>",
+  "repository" : {"type": "git", "url": "git://github.com/hallison/vim-markdown.git"},
+  "dependencies" : {},
+  "description" : "Markdown syntax highlight for Vim editor with snippets support"
+}
