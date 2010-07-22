@@ -20,6 +20,7 @@ setl foldtext=LedgerFoldText()
 setl foldmethod=syntax
 setl include=^!include
 setl comments=b:;
+setl commentstring=;%s
 setl omnifunc=LedgerComplete
 
 " You can set a maximal number of columns the fold text (excluding amount)
