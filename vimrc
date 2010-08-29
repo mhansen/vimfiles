@@ -24,7 +24,7 @@ nmap <bs> <C-t>
 
 let mapleader = "," "Leader key
 
-nmap <Leader>e :FuzzyFinderTextMate<CR>
+nmap <Leader>e :CommandT<CR>
 
 "quick .vimrc editing
 nmap <Leader>.e :edit $MYVIMRC<CR>
