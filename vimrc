@@ -2,6 +2,22 @@
 "must be first, because it changes other options as a side effect
 set nocompatible
 
+" the colon is crazy hard to type, you have to hold down shift and stuff
+" space isn't doing anything useful, lets remap it to colon!
+nnoremap <space> :
+
+function! RunShebang()
+    if (match(getline(1),'^\#!') == 0)
+        :!./%
+    else
+        echo "No shebang in this file"
+    endif
+endfunction
+map <F5> :call RunShebang()<CR>
+
+"clar the search hilghlighting with double escape
+nmap <silent> <esc><esc> :nohlsearch<CR>
+
 "forgot sudo? no worries! :w!!
 cmap w!! w !sudo tee % >/dev/null
 
