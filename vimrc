@@ -2,11 +2,18 @@
 "must be first, because it changes other options as a side effect
 set nocompatible
 
+"forgot sudo? no worries! :w!!
+cmap w!! w !sudo tee % >/dev/null
+
+"change the terminals title
+set title
+
 set encoding=utf-8
 "Use bash not sh for advanced features like color
 set shell=bash
 
 "initialize bundles in .vim/bundle
+call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 "Note that you need to invoke the pathogen functions before invoking "filetype
 "plugin indent on" if you want it to load ftdetect files. On Debian (and
@@ -118,9 +125,12 @@ set incsearch
 "indent settings
 set shiftwidth=4
 set tabstop=4  
+set shiftround " user a multiple of shiftwidth when indenting with '<'/'>'
 set autoindent
 set smartindent
 set expandtab "expand tabs to spaces
+set smarttab " insert tabs on the start of a line according to shiftwidth, not
+             " tabstop
 
 "completion settings
 set wildmode=list:longest
