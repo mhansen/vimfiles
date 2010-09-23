@@ -2,6 +2,20 @@
 "must be first, because it changes other options as a side effect
 set nocompatible
 
+"moving by file line instead of screen line is stupid
+nnoremap j gj
+nnoremap k gk
+
+"debian/ubuntu call ack 'ack-grep' and set some bad options 
+"for quickfixing. we need to override these
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
+if version >= 730
+    set undofile "store undo changes even after you close the file
+    set relativenumber "show the number of lines up/down on the side
+    set colorcolumn=85 "remind me not to make long lines
+endif
+
 " the colon is crazy hard to type, you have to hold down shift and stuff
 " space isn't doing anything useful, lets remap it to colon!
 nnoremap <space> :
@@ -14,9 +28,6 @@ function! RunShebang()
     endif
 endfunction
 map <F5> :call RunShebang()<CR>
-
-"clar the search hilghlighting with double escape
-nmap <silent> <esc><esc> :nohlsearch<CR>
 
 "forgot sudo? no worries! :w!!
 cmap w!! w !sudo tee % >/dev/null
@@ -47,7 +58,9 @@ nmap <bs> <C-t>
 
 let mapleader = "," "Leader key
 
-nmap <Leader>e :CommandT<CR>
+if has('ruby')
+    nmap <Leader>e :CommandT<CR>
+end
 
 "quick .vimrc editing
 nmap <Leader>.e :edit $MYVIMRC<CR>
@@ -133,10 +146,22 @@ set backspace=indent,eol,start
 set history=1000
 
 "Search Settings
+
 set ignorecase "ignore search case
 set smartcase  "unless theres capital letters in the search
 set hlsearch
 set incsearch
+
+"clear the search hilghlighting with double escape
+nmap <silent> <esc><esc> :nohlsearch<CR>
+
+"fix Vim’s horribly broken default regex “handling” by automatically inserting
+"a \v before any string you search for. This turns off Vim’s crazy default
+"regex characters and makes searches use normal regexes. I already know
+"Perl/Python compatible regex formatting, why would I want to learn another
+"scheme?
+nnoremap / /\v
+vnoremap / /\v
 
 "indent settings
 set shiftwidth=4
