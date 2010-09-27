@@ -10,7 +10,7 @@ nnoremap k gk
 "for quickfixing. we need to override these
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
-if version >= 730
+if version >= 703
     set undofile "store undo changes even after you close the file
     set relativenumber "show the number of lines up/down on the side
     set colorcolumn=85 "remind me not to make long lines
