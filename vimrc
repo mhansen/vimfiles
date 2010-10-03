@@ -8,12 +8,13 @@ nnoremap k gk
 
 "debian/ubuntu call ack 'ack-grep' and set some bad options 
 "for quickfixing. we need to override these
+"this is used for the !Ack bundle
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 if version >= 703
     set undofile "store undo changes even after you close the file
     set relativenumber "show the number of lines up/down on the side
-    set colorcolumn=85 "remind me not to make long lines
+    set colorcolumn=81 "remind me not to make long lines
 endif
 
 " the colon is crazy hard to type, you have to hold down shift and stuff
@@ -191,6 +192,7 @@ let g:rubycomplete_classes_in_global = 1
 "gvim
 if has('gui_running')
     set guioptions-=T "no toolbar
+    set guioptions-=m "no menu
     set guifont=Monospace\ 8
     set guitablabel=(%n%M)\ %f
     set shellxquote=\"
