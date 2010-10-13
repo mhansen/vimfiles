@@ -1,6 +1,5 @@
 snippet main
-	public static void main (String [] args)
-	{
+	public static void main (String [] args) {
 		${1:/* code */}
 	}
 snippet pu
@@ -53,7 +52,9 @@ snippet elif
 snippet wh
 	while (${1}) ${2}
 snippet for
-	for (${1}; ${2}; ${3}) ${4}
+	for (${1}; ${2}; ${3}) {
+		${4: /* code */}
+	}
 snippet fore
 	for (${1} : ${2}) ${3}
 snippet sw
@@ -67,7 +68,9 @@ snippet tc
 snippet t
 	public void test${1:Name}() throws Exception ${2}
 snippet cl
-	class ${1:`Filename("", "untitled")`} ${2}
+	class ${1:`Filename("", "untitled")`} {
+		${2}
+	}
 snippet in
 	interface ${1:`Filename("", "untitled")`} ${2:extends Parent}${3}
 snippet m
