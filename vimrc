@@ -13,6 +13,9 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 if version >= 703
     set undofile "store undo changes even after you close the file
+    set undodir=~/.vim/undodir
+    set undolevels=1000 "maximum number of changes that can be undone
+    set undoreload=10000 "maximum number lines to save for undo on a buffer reload
     set relativenumber "show the number of lines up/down on the side
     set colorcolumn=81 "remind me not to make long lines
 endif
@@ -41,8 +44,8 @@ set encoding=utf-8
 set shell=bash
 
 "initialize bundles in .vim/bundle
-call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 "Note that you need to invoke the pathogen functions before invoking "filetype
 "plugin indent on" if you want it to load ftdetect files. On Debian (and
 "probably other distros), the system vimrc does this early on, so you actually
