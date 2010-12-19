@@ -2,6 +2,8 @@
 "must be first, because it changes other options as a side effect
 set nocompatible
 
+syntax on
+
 "moving by file line instead of screen line is stupid
 nnoremap j gj
 nnoremap k gk
@@ -139,7 +141,6 @@ endif
 "load filetype modes and indent files
 filetype plugin on
 filetype indent on
-syntax on
 
 "========  End Visual Settings  ========"
 
