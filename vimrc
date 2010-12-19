@@ -112,9 +112,9 @@ set statusline+=%*
 set statusline+=%{fugitive#statusline()}
 
 set statusline+=%=      "left/right separator
-set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
+set statusline+=\ %c      "cursor column
 
 set laststatus=2
 
