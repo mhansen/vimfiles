@@ -26,7 +26,7 @@ nnoremap <space> :
 
 function! RunShebang()
     if (match(getline(1),'^\#!') == 0)
-        :!./%
+        :!chmod +x % && ./%
     else
         echo "No shebang in this file"
     endif
