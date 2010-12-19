@@ -129,9 +129,6 @@ if &term == "linux"
 endif
 
 
-"load filetype modes and indent files
-filetype plugin on
-filetype indent on
 
 "========  End Visual Settings  ========"
 
