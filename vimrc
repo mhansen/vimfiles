@@ -13,15 +13,6 @@ nnoremap k gk
 "this is used for the !Ack bundle
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
-if version >= 703
-    set undofile "store undo changes even after you close the file
-    set undodir=~/.vim/undodir
-    set undolevels=1000 "maximum number of changes that can be undone
-    set undoreload=10000 "maximum number lines to save for undo on a buffer reload
-    set relativenumber "show the number of lines up/down on the side
-    set colorcolumn=81 "remind me not to make long lines
-endif
-
 " the colon is crazy hard to type, you have to hold down shift and stuff
 " space isn't doing anything useful, lets remap it to colon!
 nnoremap <space> :
@@ -240,3 +231,13 @@ autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
   \   exe "normal! g`\"" |
   \ endif
+
+if version >= 703
+    set undofile "store undo changes even after you close the file
+    set undodir=~/.vim/undodir
+    set undolevels=1000 "maximum number of changes that can be undone
+    set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+    "set relativenumber "show the number of lines up/down on the side
+    set colorcolumn=+1,+2,+3,+4,+5,+6,+7,+8,+9,+10 "remind me not to make long lines
+    hi ColorColumn ctermbg=black
+endif
