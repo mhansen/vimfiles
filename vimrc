@@ -48,8 +48,6 @@ filetype plugin indent on
 
 "======== Keyboard Shortcuts ========"
 
-"jump to tag with enter
-nmap <cr> <C-]>
 "go back a tag with backspace
 nmap <bs> <C-t>
 
