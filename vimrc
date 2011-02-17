@@ -236,3 +236,6 @@ if version >= 703
     set colorcolumn=+1,+2,+3,+4,+5,+6,+7,+8,+9,+10 "remind me not to make long lines
     hi ColorColumn ctermbg=black
 endif
+
+"i always fat finger this one
+command! W w 
