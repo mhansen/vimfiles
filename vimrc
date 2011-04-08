@@ -239,3 +239,9 @@ endif
 
 "i always fat finger this one
 command! W w 
+
+"start python files with boilerplate done
+augroup BufNewFileFromTemplate
+au!
+autocmd BufNewFile * silent! 0r ~/.vim/templates/%:e
+augroup BufNewFileFromTemplate
