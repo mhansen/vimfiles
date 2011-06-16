@@ -20,6 +20,8 @@ nnoremap <space> :
 function! RunShebang()
     if (match(getline(1),'^\#!') == 0)
         :!chmod +x % && ./%
+    elseif (match(getline(1),'^<!') == 0) "match like <!doctype
+        :!chromium-browser ./%
     else
         echo "No shebang in this file"
     endif
