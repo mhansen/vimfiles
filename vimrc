@@ -245,3 +245,9 @@ augroup BufNewFileFromTemplate
 au!
 autocmd BufNewFile * silent! 0r ~/.vim/templates/%:e
 augroup BufNewFileFromTemplate
+
+"auto compile coffeescript files on save
+autocmd BufWritePost,FileWritePost *.coffee :silent !coffee -c <afile>
+
+"auto compile markdown files on save
+autocmd BufWritePost,FileWritePost *.markdown :silent !markdown <afile> > <afile>.html
