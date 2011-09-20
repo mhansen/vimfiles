@@ -254,3 +254,7 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 "auto compile markdown files on save
 "autocmd BufWritePost,FileWritePost *.markdown :silent !markdown <afile> > <afile>.html
+
+"close html tags quickly with ,/
+"http://stackoverflow.com/questions/130734/how-can-one-close-html-tags-in-vim-quickly/532656#532656
+imap ,/ </<C-X><C-O>
