@@ -2,8 +2,6 @@
 " Language   : Scala (http://scala-lang.org/)
 " Maintainers: Stefan Matthias Aust, Julien Wetterwald
 " Last Change: 2007 June 13
-" Revision   : $Id$
-"        $URL$
 
 if version < 600
   syntax clear
@@ -98,6 +96,8 @@ syn region scalaXmlEscape matchgroup=scalaXmlEscapeSpecial start="{" matchgroup=
 syn match scalaXmlQuote "&[^;]\+;" contained
 syn match scalaXmlComment "<!--\_[^>]*-->" contained
 
+syn match scalaAnnotation "@[^ =:;()[]\+"
+
 syn sync fromstart
 
 " map Scala groups to standard groups
@@ -140,6 +140,7 @@ hi link scalaDefSpecializer Function
 hi link scalaClassName Special
 hi link scalaClassSpecializer Special
 hi link scalaConstructor Special
+hi link scalaAnnotation Special
 hi link scalaConstructorSpecializer scalaConstructor
 
 let b:current_syntax = "scala"
