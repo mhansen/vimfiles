@@ -2,19 +2,21 @@
 "must be first, because it changes other options as a side effect
 set nocompatible
 
+"syntax highlighting, probably the most important setting here
 syntax on
 
 "moving by file line instead of screen line is stupid
+"so move by screen line
 nnoremap j gj
 nnoremap k gk
 
 "debian/ubuntu call ack 'ack-grep' and set some bad options 
 "for quickfixing. we need to override these
-"this is used for the !Ack bundle
+"this is used for the :Ack bundle
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
-" the colon is crazy hard to type, you have to hold down shift and stuff
-" space isn't doing anything useful, lets remap it to colon!
+" ':' is crazy hard to type, you have to hold down shift and stuff.
+" space isn't doing anything useful in normal mode, lets remap it to ':'!
 nnoremap <space> :
 
 function! RunShebang()
@@ -28,17 +30,21 @@ function! RunShebang()
 endfunction
 map <F5> :call RunShebang()<CR>
 
-"forgot sudo? no worries! :w!!
+"forgot sudo when editing a file that you dont have access to?
+"no worries! use :w!! and we'll sort it out
 cmap w!! w !sudo tee % >/dev/null
 
-"change the terminals title
+"change the terminals title for gui toolkits
 set title
 
+"It's 2011. There's only one encoding, and that's utf-8.
 set encoding=utf-8
-"Use bash not sh for advanced features like color
+
+"Use bash not sh for advanced features like color.
+"I wish I could use fish here, but it doesn't play nice.
 set shell=bash
 
-"initialize bundles in .vim/bundle
+"Initialize bundles in .vim/bundle.
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 "Note that you need to invoke the pathogen functions before invoking "filetype
@@ -50,11 +56,14 @@ filetype plugin indent on
 
 "======== Keyboard Shortcuts ========"
 
-"go back a tag with backspace
+"Go back a tag with backspace in normal mode, like hitting the back button in
+"a browser.  Pop a tag off the tag stack.
 nmap <bs> <C-t>
 
-let mapleader = "," "Leader key
+"Leader key for all sorts of custom mappings
+let mapleader = ","
 
+"Don't bug me with an error if I don't have ruby and I try to use Cmd-T
 if has('ruby')
     nmap <Leader>e :CommandT<CR>
 end
@@ -62,13 +71,6 @@ end
 "quick .vimrc editing
 nmap <Leader>.e :edit $MYVIMRC<CR>
 nmap <Leader>.s :source $MYVIMRC<CR>
-
-"vimshell keybindings
-nmap <C-W>e :new \| :vimshell bash<CR>
-nmap <C-W>E :vnew \| :vimshell bash<CR>
-
-"taglist bindings
-nmap <Leader>tl :TlistToggle<CR>
 
 "NERDTree
 nmap <Leader>nt :NERDTreeToggle<CR>
@@ -121,14 +123,15 @@ set laststatus=2
 set linebreak "wrap lines at convenient points
 
 if &term == "xterm" || &term == "screen-bce" || $term == "builtin-gui"
-    set t_Co=256 "give me higher color depth
+    "Give me higher color depth
+    set t_Co=256 
     colorscheme wombat
 endif
 if &term == "linux"
+    "Old-school console, like you get with Ctrl-Alt-F1. No higher color
+    "support.
     colorscheme default
 endif
-
-
 
 "========  End Visual Settings  ========"
 
@@ -139,11 +142,10 @@ set backspace=indent,eol,start
 set history=1000
 
 "Search Settings
-
 set ignorecase "ignore search case
 set smartcase  "unless theres capital letters in the search
 set hlsearch
-set incsearch
+set incsearch  "search as I type
 
 "clear the search hilghlighting with double escape
 nmap <silent> <esc><esc> :nohlsearch<CR>
@@ -169,16 +171,11 @@ set smarttab " insert tabs on the start of a line according to shiftwidth, not
 "completion settings
 set wildmode=list:longest
 
-"scroll settings
+"Scroll when I get three lines from the top or bottom of the screen.
 set scrolloff=3 
 
-"======== HTML Settings ========"
-:let html_number_lines = 0  "no line numbers
-:let html_use_css = 1       "optimize html for new browsers
-:let html_no_pre = 1        "don't wrap everything in <pre>
-
-"==========Ruby Settings==========
-"parse the entire buffer to add a list of classes to autocompletion results
+"Ruby: parse the entire buffer to add a list of classes to autocompletion
+"results
 let g:rubycomplete_classes_in_global = 1
 
 "gvim
@@ -202,7 +199,6 @@ map <A-8>  8gt
 map <A-9>  9gt
 map <A-0>  10gt
 
-
 command! Spell setlocal spell spelllang=en_nz
 set dictionary+=/usr/share/dict/british-english
 
@@ -213,36 +209,36 @@ let g:SuperTabContextDefaultCompletionType = '<c-o>'
 let g:SuperTabRetainCompletionDuration = 'session'
 let g:SuperTabLongestHighlight = 1
 
-nnoremap <Leader>ji :JavaImport<CR>
-nnoremap <Leader>jd :JavaDocSearch -x declarations<CR>
-nnoremap <Leader>jc :JavaCorrect<CR>
-
-" vertically expand the window you move into
+" Accordion style user-interface: vertically expand the window you move into
 map <C-j> <C-w>j<C-w>_
 map <C-k> <C-w>k<C-w>_
 map <C-h> <C-w>h<C-w>_
 map <C-l> <C-w>l<C-w>_
 
-"restore cursor position (for irb)
+"restore cursor position (for irb interactive editing)
 autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
   \   exe "normal! g`\"" |
   \ endif
 
 if version >= 703
-    set undofile "store undo changes even after you close the file
-    set undodir=~/.vim/undodir
-    set undolevels=1000 "maximum number of changes that can be undone
-    set undoreload=10000 "maximum number lines to save for undo on a buffer reload
-    "set relativenumber "show the number of lines up/down on the side
-    set colorcolumn=+1,+2,+3,+4,+5,+6,+7,+8,+9,+10 "remind me not to make long lines
+    "store undo changes even after you close the file
+    set undofile 
+    set undodir=/tmp
+    "Maximum number of changes that can be undone.
+    set undolevels=1000 
+    "Maximum number lines to save for undo on a buffer reload.
+    set undoreload=10000 
+    "Remind me not to make long lines with a subtle column of gray on the
+    "right.
+    set colorcolumn=+1,+2,+3,+4,+5,+6,+7,+8,+9,+10 
     hi ColorColumn ctermbg=black
 endif
 
-"i always fat finger this one
+"I always fat finger :W instead of :w
 command! W w 
 
-"start python files with boilerplate done
+"Start python files with boilerplate done
 augroup BufNewFileFromTemplate
 au!
 autocmd BufNewFile * silent! 0r ~/.vim/templates/%:e
@@ -255,6 +251,6 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 "auto compile markdown files on save
 "autocmd BufWritePost,FileWritePost *.markdown :silent !markdown <afile> > <afile>.html
 
-"close html tags quickly with ,/
+"Close html tags quickly with ,/
 "http://stackoverflow.com/questions/130734/how-can-one-close-html-tags-in-vim-quickly/532656#532656
 imap ,/ </<C-X><C-O>
