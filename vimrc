@@ -1,3 +1,13 @@
+"Initialize bundles in .vim/bundle.
+filetype off 
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+"Note that you need to invoke the pathogen functions before invoking "filetype
+"plugin indent on" if you want it to load ftdetect files. On Debian (and
+"probably other distros), the system vimrc does this early on, so you actually
+"need to 'filetype off' before 'filetype plugin indent on' to force reloading.
+filetype plugin indent on
+
 "Use vim settings, rather than vi settings
 "must be first, because it changes other options as a side effect
 set nocompatible
@@ -44,15 +54,6 @@ set encoding=utf-8
 "I wish I could use fish here, but it doesn't play nice.
 set shell=bash
 
-"Initialize bundles in .vim/bundle.
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-"Note that you need to invoke the pathogen functions before invoking "filetype
-"plugin indent on" if you want it to load ftdetect files. On Debian (and
-"probably other distros), the system vimrc does this early on, so you actually
-"need to 'filetype off' before 'filetype plugin indent on' to force reloading.
-filetype off 
-filetype plugin indent on
 
 "======== Keyboard Shortcuts ========"
 
