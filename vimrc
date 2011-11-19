@@ -76,6 +76,12 @@ nmap <Leader>.s :source $MYVIMRC<CR>
 "NERDTree
 nmap <Leader>nt :NERDTreeToggle<CR>
 
+"FuGitIve Shortcuts
+nmap <Leader>gs :Gstatus<CR>
+nmap <Leader>gc :Gcommit<CR>
+nmap <Leader>gw :Gwrite<CR>
+nmap <Leader>gb :Gbrowse<CR>
+
 "Toggle Numbering lines
 map <F12> :set number!<CR>
 "======== End Keyboard Shortcuts ========"
