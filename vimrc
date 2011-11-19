@@ -176,6 +176,7 @@ set smarttab " insert tabs on the start of a line according to shiftwidth, not
              " tabstop
 
 "completion settings
+set wildmenu
 set wildmode=list:longest
 
 "Scroll when I get three lines from the top or bottom of the screen.
@@ -261,3 +262,26 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 "Close html tags quickly with ,/
 "http://stackoverflow.com/questions/130734/how-can-one-close-html-tags-in-vim-quickly/532656#532656
 imap ,/ </<C-X><C-O>
+
+" Resize splits when the window is resized
+au VimResized * exe "normal! \<c-w>="
+
+" Destroy infuriating keys
+nnoremap K <nop> " manual key
+
+" Show tabs with an arrow
+set list
+set listchars=tab:▸\ 
+
+" Show lines that wrap with another arrow
+set showbreak=↪
+
+" Auto write files when you leave the buffer
+set autowrite
+
+" Auto read back files that have been changed outside vim when vim detects
+" they've changed
+set autoread
+
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
