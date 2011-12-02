@@ -262,6 +262,20 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 "auto compile markdown files on save
 "autocmd BufWritePost,FileWritePost *.markdown :silent !markdown <afile> > <afile>.html
+"
+function! HamlMake()
+    py << ENDOFPY
+import os
+import vim
+if os.path.exists(".autohaml"):
+    in_file = vim.current.buffer.name
+    out_file = in_file[0:-5] + ".html"
+    os.system("haml %s > %s" % (in_file, out_file))
+ENDOFPY
+endfunction
+
+"auto compile haml files on save (only if there's a .autocompilehaml file touched
+au BufWritePost *.haml call HamlMake()
 
 "Close html tags quickly with ,/
 "http://stackoverflow.com/questions/130734/how-can-one-close-html-tags-in-vim-quickly/532656#532656
