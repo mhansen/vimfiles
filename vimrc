@@ -84,6 +84,9 @@ nmap <Leader>gb :Gbrowse<CR>
 
 "Toggle Numbering lines
 map <F12> :set number!<CR>
+
+map <F1> :set invpaste<CR>
+
 "======== End Keyboard Shortcuts ========"
 
 "========    Visual Settings     ========"
