@@ -264,14 +264,17 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 "autocmd BufWritePost,FileWritePost *.markdown :silent !markdown <afile> > <afile>.html
 "
 function! HamlMake()
-    py << ENDOFPY
+    py << ENDOFPYTHON
 import os
 import vim
-if os.path.exists(".autohaml"):
-    in_file = vim.current.buffer.name
+
+in_file = vim.current.buffer.name
+dirname = os.path.dirname(in_file)
+if os.path.exists(dirname + "/.autohaml"):
     out_file = in_file[0:-5] + ".html"
-    os.system("haml %s > %s" % (in_file, out_file))
-ENDOFPY
+    os.system("haml %s %s" % (in_file, out_file))
+
+ENDOFPYTHON
 endfunction
 
 "auto compile haml files on save (only if there's a .autocompilehaml file touched
