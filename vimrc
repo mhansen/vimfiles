@@ -294,9 +294,6 @@ nnoremap K <nop> " manual key
 set list
 set listchars=tab:▸\ 
 
-" Show lines that wrap with another arrow
-set showbreak=↪
-
 " Auto write files when you leave the buffer
 set autowrite
 
