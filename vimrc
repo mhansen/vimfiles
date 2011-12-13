@@ -307,3 +307,5 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Syntastic options
 let g:syntastic_auto_loc_list=1
+let g:syntastic_quiet_warnings=1
+let g:syntactic_disabled_filetypes = ['html']
