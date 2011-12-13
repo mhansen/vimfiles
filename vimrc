@@ -86,6 +86,7 @@ nmap <Leader>gb :Gbrowse<CR>
 map <F12> :set number!<CR>
 
 map <F1> :set invpaste<CR>
+map <F2> :lwindow<CR>
 
 "======== End Keyboard Shortcuts ========"
 
@@ -257,7 +258,7 @@ autocmd BufNewFile * silent! 0r ~/.vim/templates/%:e
 augroup BufNewFileFromTemplate
 
 "auto compile coffeescript files on save
-au BufWritePost *.coffee silent CoffeeMake!
+au BufWritePost *.coffee silent CoffeeMake! -b | redraw
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 "auto compile markdown files on save
