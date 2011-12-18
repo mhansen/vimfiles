@@ -171,8 +171,8 @@ nnoremap / /\v
 vnoremap / /\v
 
 "indent settings
-set shiftwidth=4
-set tabstop=4  
+set shiftwidth=2
+set tabstop=2
 set shiftround " user a multiple of shiftwidth when indenting with '<'/'>'
 set autoindent
 set smartindent
