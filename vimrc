@@ -86,7 +86,7 @@ nmap <Leader>gb :Gbrowse<CR>
 map <F12> :set number!<CR>
 
 map <F1> :set invpaste<CR>
-map <F2> :lwindow<CR>
+map <Leader>hs :lclose<CR>
 
 "======== End Keyboard Shortcuts ========"
 
