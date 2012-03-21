@@ -1,5 +1,12 @@
 "Initialize bundles in .vim/bundle.
-filetype off 
+filetype off
+
+"Use vim settings, rather than vi settings
+"must be first, because it changes other options as a side effect
+if &compatible
+  set nocompatible
+endif
+
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 "Note that you need to invoke the pathogen functions before invoking "filetype
@@ -7,10 +14,6 @@ call pathogen#helptags()
 "probably other distros), the system vimrc does this early on, so you actually
 "need to 'filetype off' before 'filetype plugin indent on' to force reloading.
 filetype plugin indent on
-
-"Use vim settings, rather than vi settings
-"must be first, because it changes other options as a side effect
-set nocompatible
 
 "syntax highlighting, probably the most important setting here
 syntax on
@@ -20,7 +23,7 @@ syntax on
 nnoremap j gj
 nnoremap k gk
 
-"debian/ubuntu call ack 'ack-grep' and set some bad options 
+"debian/ubuntu call ack 'ack-grep' and set some bad options
 "for quickfixing. we need to override these
 "this is used for the :Ack bundle
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -86,7 +89,7 @@ nmap <Leader>gb :Gbrowse<CR>
 map <F12> :set number!<CR>
 
 map <F1> :set invpaste<CR>
-map <F2> :lwindow<CR>
+map <Leader>hs :lclose<CR>
 
 "======== End Keyboard Shortcuts ========"
 
@@ -134,11 +137,9 @@ set laststatus=2
 
 set linebreak "wrap lines at convenient points
 
-if &term == "xterm" || &term == "screen-bce" || $term == "builtin-gui"
-    "Give me higher color depth
-    set t_Co=256 
-    colorscheme wombat
-endif
+"Give me higher color depth
+set t_Co=256
+colorscheme wombat
 if &term == "linux"
     "Old-school console, like you get with Ctrl-Alt-F1. No higher color
     "support.
@@ -171,8 +172,8 @@ nnoremap / /\v
 vnoremap / /\v
 
 "indent settings
-set shiftwidth=4
-set tabstop=4  
+set shiftwidth=2
+set tabstop=2
 set shiftround " user a multiple of shiftwidth when indenting with '<'/'>'
 set autoindent
 set smartindent
@@ -185,7 +186,7 @@ set wildmenu
 set wildmode=list:longest
 
 "Scroll when I get three lines from the top or bottom of the screen.
-set scrolloff=3 
+set scrolloff=3
 
 "Ruby: parse the entire buffer to add a list of classes to autocompletion
 "results
@@ -199,18 +200,6 @@ if has('gui_running')
     set guitablabel=(%n%M)\ %f
     set shellxquote=\"
 endif
-
-"tab navigation with Alt
-map <A-1>  1gt
-map <A-2>  2gt
-map <A-3>  3gt
-map <A-4>  4gt
-map <A-5>  5gt
-map <A-6>  6gt
-map <A-7>  7gt
-map <A-8>  8gt
-map <A-9>  9gt
-map <A-0>  10gt
 
 command! Spell setlocal spell spelllang=en_nz
 set dictionary+=/usr/share/dict/british-english
@@ -236,20 +225,20 @@ autocmd BufReadPost *
 
 if version >= 703
     "store undo changes even after you close the file
-    set undofile 
+    set undofile
     set undodir=/tmp
     "Maximum number of changes that can be undone.
-    set undolevels=1000 
+    set undolevels=1000
     "Maximum number lines to save for undo on a buffer reload.
-    set undoreload=10000 
+    set undoreload=10000
     "Remind me not to make long lines with a subtle column of gray on the
     "right.
-    set colorcolumn=+1,+2,+3,+4,+5,+6,+7,+8,+9,+10 
-    hi ColorColumn ctermbg=black
+    set colorcolumn=+1,+2,+3,+4,+5,+6,+7,+8,+9,+10
+    hi ColorColumn ctermbg=darkgray
 endif
 
 "I always fat finger :W instead of :w
-command! W w 
+command! W w
 
 "Start python files with boilerplate done
 augroup BufNewFileFromTemplate
@@ -258,8 +247,7 @@ autocmd BufNewFile * silent! 0r ~/.vim/templates/%:e
 augroup BufNewFileFromTemplate
 
 "auto compile coffeescript files on save
-au BufWritePost *.coffee silent CoffeeMake! -b | redraw
-au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+au BufWritePost *.coffee silent CoffeeMake! -b | cwindow 2 | redraw
 
 "auto compile markdown files on save
 "autocmd BufWritePost,FileWritePost *.markdown :silent !markdown <afile> > <afile>.html
@@ -293,7 +281,7 @@ nnoremap K <nop> " manual key
 
 " Show tabs with an arrow
 set list
-set listchars=tab:▸\ 
+set listchars=tab:▸\
 
 " Auto write files when you leave the buffer
 set autowrite
@@ -306,4 +294,6 @@ set autoread
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Syntastic options
-let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list=0
+let g:syntastic_quiet_warnings=0
+let g:syntastic_disabled_filetypes = ['html', 'js']
