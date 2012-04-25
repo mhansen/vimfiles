@@ -36,7 +36,7 @@ function! RunShebang()
     if (match(getline(1),'^\#!') == 0)
         :!chmod +x % && ./%
     elseif (match(getline(1),'^<!') == 0) "match like <!doctype
-        :!chromium-browser ./%
+        :!google-chrome ./%
     else
         echo "No shebang in this file"
     endif
@@ -84,6 +84,8 @@ nmap <Leader>gs :Gstatus<CR>
 nmap <Leader>gc :Gcommit<CR>
 nmap <Leader>gw :Gwrite<CR>
 nmap <Leader>gb :Gbrowse<CR>
+
+nmap <Leader>r :redraw!<CR>
 
 "Toggle Numbering lines
 map <F12> :set number!<CR>
@@ -247,7 +249,15 @@ autocmd BufNewFile * silent! 0r ~/.vim/templates/%:e
 augroup BufNewFileFromTemplate
 
 "auto compile coffeescript files on save
-au BufWritePost *.coffee silent CoffeeMake! -b | cwindow 2 | redraw
+au BufWritePost *.coffee silent CoffeeMake! -b | cwindow 2 | redraw!
+
+"auto gofmt go files on save
+au BufWritePost *.go silent call GoFmt()
+function! GoFmt()
+  !gofmt -w <afile>
+  edit
+  syntax on
+endfunction
 
 "auto compile markdown files on save
 "autocmd BufWritePost,FileWritePost *.markdown :silent !markdown <afile> > <afile>.html
@@ -266,7 +276,7 @@ if os.path.exists(dirname + "/.autohaml"):
 ENDOFPYTHON
 endfunction
 
-"auto compile haml files on save (only if there's a .autocompilehaml file touched
+"auto compile haml files on save (only if there's a .autohaml file touched
 au BufWritePost *.haml call HamlMake()
 
 "Close html tags quickly with ,/
