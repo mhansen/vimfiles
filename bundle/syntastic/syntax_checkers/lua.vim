@@ -10,17 +10,12 @@
 "
 "============================================================================
 
-if exists('loaded_lua_syntax_checker')
-    finish
-endif
-let loaded_lua_syntax_checker = 1
-
 " check if the lua compiler is installed
 if !executable('luac')
     finish
 endif
 
-function! SyntaxCheckers_lua_Term(pos)
+function! SyntaxCheckers_lua_GetHighlightRegex(pos)
     let near = matchstr(a:pos['text'], "near '[^']\\+'")
     let result = ''
     if len(near) > 0
@@ -47,16 +42,9 @@ function! SyntaxCheckers_lua_GetLocList()
     let makeprg = 'luac -p ' . shellescape(expand('%'))
     let errorformat =  'luac: %#%f:%l: %m'
 
-    let loclist = SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
+    return SyntasticMake({ 'makeprg': makeprg,
+                         \ 'errorformat': errorformat,
+                         \ 'defaults': { 'bufnr': bufnr(''), 'type': 'E' } })
 
-    let bufn = bufnr('')
-    for pos in loclist
-        let pos['bufnr'] = bufn
-        let pos['type'] = 'E'
-    endfor
-
-    call syntastic#HighlightErrors(loclist, function("SyntaxCheckers_lua_Term"))
-
-    return loclist
 endfunction
 

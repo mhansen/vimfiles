@@ -18,24 +18,32 @@ Install on Debian / Ubuntu with:
 
     sudo apt-get install ack-grep
 
-For Debian / Ubuntu you can add this line into your .vimrc:
+Install on Fedora with:
 
-    let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-
+    su -l -c 'yum install ack'
 Install on Gentoo with:
 
     sudo emerge ack
 
 Install with Homebrew:
+
     brew install ack
 
 Install with MacPorts:
 
     sudo port install p5-app-ack
 
-Install with Gentoo Prefix
+Install with Gentoo Prefix:
 
     emerge ack
+
+Install on FreeBSD with:
+
+    cd /usr/ports/textproc/p5-ack/ && make install clean
+
+You can specify a custom ack name and path in your .vimrc like so:
+
+    let g:ackprg="<custom-ack-path-goes-here> -H --nocolor --nogroup --column"
 
 Otherwise, you are on your own.
 
@@ -74,15 +82,23 @@ Just like where you use :grep, :grepadd, :lgrep, and :lgrepadd, you can use `:Ac
 
         See ack --help=types for a list of valid types.
 
+### Gotchas ###
+
+Some characters have special meaning, and need to be escaped your search pattern. For instance, '#'. You have to escape it like this `:Ack '\\\#define foo'` to search for `#define foo`. (From [blueyed in issue #5](https://github.com/mileszs/ack.vim/issues/5).)
+
 ### Keyboard Shortcuts ###
 
 In the quickfix window, you can use:
 
-    o to open (same as enter)
-    go to preview file (open but maintain focus on ack.vim results)
-    t to open in new tab
-    T to open in new tab silently
-    q to close the quickfix window
+    o    to open (same as enter)
+    go   to preview file (open but maintain focus on ack.vim results)
+    t    to open in new tab
+    T    to open in new tab silently
+    h    to open in horizontal split
+    H    to open in horizontal split silently
+    v    to open in vertical split
+    gv   to open in vertical split silently
+    q    to close the quickfix window
 
 This Vim plugin is derived (and by derived, I mean copied, essentially) from
 Antoine Imbert's blog post [Ack and Vim

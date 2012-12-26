@@ -32,9 +32,10 @@ function! s:MatchPairs(open, close, stopat)
 		let stopat = a:stopat
 	endif
 
-	return searchpairpos(a:open, '', a:close, 'bWn',
+	let pos = searchpairpos(a:open, '', a:close, 'bWn',
 				\ 'vimclojure#util#SynIdName() !~ "clojureParen\\d"',
 				\ stopat)
+	return [ pos[0], virtcol(pos) ]
 endfunction
 
 function! ClojureCheckForStringWorker() dict
@@ -214,10 +215,13 @@ function! GetClojureIndent()
 	if g:vimclojure#FuzzyIndent
 				\ && w != 'with-meta'
 				\ && w != 'clojure.core/with-meta'
-				\ && w =~ '\(^\|/\)\(def\|with\|let\)'
-				\ && w !~ '\(^\|/\)\(def\|with\).*\*$'
-				\ && w !~ '\(^\|/\)\(def\|with\).*-fn$'
-		return paren[1] + &shiftwidth - 1
+		for pat in split(g:vimclojure#FuzzyIndentPatterns, ",")
+			if w =~ '\(^\|/\)' . pat . '$'
+						\ && w !~ '\(^\|/\)' . pat . '\*$'
+						\ && w !~ '\(^\|/\)' . pat . '-fn$'
+				return paren[1] + &shiftwidth - 1
+			endif
+		endfor
 	endif
 
 	normal! w
@@ -226,7 +230,7 @@ function! GetClojureIndent()
 	endif
 
 	normal! ge
-	return col(".") + 1
+	return virtcol(".") + 1
 endfunction
 
 setlocal indentexpr=GetClojureIndent()

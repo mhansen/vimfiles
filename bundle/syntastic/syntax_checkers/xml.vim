@@ -9,10 +9,10 @@
 "             See http://sam.zoy.org/wtfpl/COPYING for more details.
 "
 "============================================================================
-if exists("loaded_xml_syntax_checker")
-    finish
-endif
-let loaded_xml_syntax_checker = 1
+
+" You can use a local installation of DTDs to significantly speed up validation
+" and allow you to validate XML data without network access, see xmlcatalog(1)
+" and http://www.xmlsoft.org/catalog.html for more information.
 
 "bail if the user doesnt have tidy or grep installed
 if !executable("xmllint")
@@ -21,7 +21,7 @@ endif
 
 function! SyntaxCheckers_xml_GetLocList()
 
-    let makeprg="xmllint --xinclude --noout --postvalid %"
+    let makeprg="xmllint --xinclude --noout --postvalid " . shellescape(expand("%:p"))
     let errorformat='%E%f:%l:\ error\ :\ %m,
         \%-G%f:%l:\ validity\ error\ :\ Validation\ failed:\ no\ DTD\ found\ %m,
         \%W%f:%l:\ warning\ :\ %m,
