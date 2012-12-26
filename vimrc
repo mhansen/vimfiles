@@ -73,7 +73,7 @@ if has('ruby')
 end
 
 "quick .vimrc editing
-nmap <Leader>.e :edit $MYVIMRC<CR>
+nmap <Leader>.e :edit ~/.vim/vimrc<CR>
 nmap <Leader>.s :source $MYVIMRC<CR>
 
 "NERDTree
@@ -86,6 +86,7 @@ nmap <Leader>gw :Gwrite<CR>
 nmap <Leader>gb :Gbrowse<CR>
 
 nmap <Leader>r :redraw!<CR>
+nmap <Leader>du :diffupdate<CR>
 
 "Toggle Numbering lines
 map <F12> :set number!<CR>
@@ -219,12 +220,6 @@ map <C-k> <C-w>k<C-w>_
 map <C-h> <C-w>h<C-w>_
 map <C-l> <C-w>l<C-w>_
 
-"restore cursor position (for irb interactive editing)
-autocmd BufReadPost *
-  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
-
 if version >= 703
     "store undo changes even after you close the file
     set undofile
@@ -252,12 +247,14 @@ augroup BufNewFileFromTemplate
 au BufWritePost *.coffee silent CoffeeMake! -b | cwindow 2 | redraw!
 
 "auto gofmt go files on save
-au BufWritePost *.go silent call GoFmt()
-function! GoFmt()
-  !gofmt -w <afile>
-  edit
-  syntax on
-endfunction
+if executable('gofmtwrapper') 
+    autocmd BufRead,BufWrite *.go 
+        \ execute 'normal mx' | 
+        \ execute 'silent %!gofmtwrapper' | 
+        \ execute 'normal `x' 
+    autocmd Filetype go set formatprg=gofmtwrapper 
+endif 
+
 
 "auto compile markdown files on save
 "autocmd BufWritePost,FileWritePost *.markdown :silent !markdown <afile> > <afile>.html
@@ -307,3 +304,14 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 let g:syntastic_auto_loc_list=0
 let g:syntastic_quiet_warnings=0
 let g:syntastic_disabled_filetypes = ['html', 'js']
+
+:nnoremap <Leader>sp :set invpaste<CR>
+
+let g:ctrlp_max_files = 100000
+
+" You know, I almost never want to delete-and-replace the current line
+" So I almost never use the S command (and cc is quicker to type anyway)
+" On the other hand, I’m forever using :%s/pattern/replacement/g
+" So I optimized my workflow:
+nmap S :%s//g<LEFT><LEFT>
+vmap S :s//g<LEFT><LEFT>
