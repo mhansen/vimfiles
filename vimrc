@@ -247,13 +247,13 @@ augroup BufNewFileFromTemplate
 au BufWritePost *.coffee silent CoffeeMake! -b | cwindow 2 | redraw!
 
 "auto gofmt go files on save
-if executable('gofmtwrapper') 
-    autocmd BufRead,BufWrite *.go 
-        \ execute 'normal mx' | 
-        \ execute 'silent %!gofmtwrapper' | 
-        \ execute 'normal `x' 
-    autocmd Filetype go set formatprg=gofmtwrapper 
-endif 
+if executable('gofmtwrapper')
+    autocmd BufRead,BufWrite *.go
+        \ execute 'normal mx' |
+        \ execute 'silent %!gofmtwrapper' |
+        \ execute 'normal `x'
+    autocmd Filetype go set formatprg=gofmtwrapper
+endif
 
 
 "auto compile markdown files on save
@@ -315,3 +315,13 @@ let g:ctrlp_max_files = 100000
 " So I optimized my workflow:
 nmap S :%s//g<LEFT><LEFT>
 vmap S :s//g<LEFT><LEFT>
+
+" Strip trailing whitespace (,ss)
+function! StripWhitespace ()
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  :%s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
+endfunction
+noremap <leader>ss :call StripWhitespace ()<CR>
