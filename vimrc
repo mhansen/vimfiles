@@ -6,6 +6,33 @@ filetype off
 if &compatible
   set nocompatible
 endif
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+Bundle 'derekwyatt/vim-scala'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
+Bundle 'ledger/vim-ledger'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'matchit.zip'
+Bundle 'mileszs/ack.vim'
+Bundle 'nginx.vim'
+Bundle 'othree/html5.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'skammer/vim-css-color'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-foreplay'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-liquid'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-repeat'
 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
