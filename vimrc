@@ -14,6 +14,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'derekwyatt/vim-scala'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'ervandew/supertab'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ledger/vim-ledger'
 Bundle 'Lokaltog/vim-easymotion'
@@ -23,6 +24,7 @@ Bundle 'nginx.vim'
 Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/syntastic'
 Bundle 'skammer/vim-css-color'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-foreplay'
@@ -311,7 +313,7 @@ imap ,/ </<C-X><C-O>
 au VimResized * exe "normal! \<c-w>="
 
 " Destroy infuriating keys
-nnoremap K <nop> " manual key
+nnoremap K k
 
 " Show tabs with an arrow
 set list
@@ -352,3 +354,8 @@ function! StripWhitespace ()
   call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace ()<CR>
+
+inoremap jj <Esc>
+
+autocmd BufNewFile,BufRead *.json set ft=javascript
+autocmd BufRead,BufNewFile *.watchr set ft=ruby

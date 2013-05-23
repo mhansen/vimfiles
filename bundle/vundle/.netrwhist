@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/markhansen/.vim/bundle/json/ftdetect'
+let g:netrw_dirhist_2='/home/markhansen/.vim/bundle'
+let g:netrw_dirhist_3='/home/markhansen/.vim/bundle/watchr'
+let g:netrw_dirhist_4='/home/markhansen/.vim/bundle/watchr/ftdetect'

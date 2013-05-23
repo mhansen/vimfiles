@@ -27,9 +27,11 @@ if ! exists("g:ledger_bin") || empty(g:ledger_bin) || ! executable(split(g:ledge
   if executable('ledger')
     let g:ledger_bin = 'ledger'
   else
-    unlet g:ledger_bin
-    echoerr "ledger command not found. Set g:ledger_bin or extend $PATH ".
+    unlet! g:ledger_bin
+    echohl WarningMsg
+    echomsg "ledger command not found. Set g:ledger_bin or extend $PATH ".
           \ "to enable error checking and auto-formatting."
+    echohl None
   endif
 endif
 
@@ -293,20 +295,27 @@ function! LedgerSetDate(lnum, type, ...) "{{{1
     let date = [formatted]
   endif
 
-  if a:type ==? 'actual'
+  if a:type =~? 'effective\|actual'
+    echoerr "actual/effective arguments were replaced by primary/auxiliary"
+    return
+  endif
+
+  if a:type ==? 'primary'
     let date[0] = formatted
-  elseif a:type ==? 'effective'
+  elseif a:type ==? 'auxiliary'
     if time < 0
-      " remove effective date
+      " remove auxiliary date
       let date = [date[0]]
     else
-      " set effective date
+      " set auxiliary date
       if len(date) >= 2
         let date[1] = formatted
       else
         call add(date, formatted)
       endif
     endif
+  elseif a:type ==? 'unshift'
+    let date = [formatted, date[0]]
   endif
 
   let trans['date'] = join(date, '=')
