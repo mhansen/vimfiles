@@ -13,8 +13,9 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'derekwyatt/vim-scala'
-Bundle 'kchmck/vim-coffee-script'
 Bundle 'ervandew/supertab'
+Bundle 'ihacklog/HiCursorWords'
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ledger/vim-ledger'
 Bundle 'Lokaltog/vim-easymotion'
