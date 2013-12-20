@@ -244,7 +244,7 @@ autocmd BufNewFile * silent! 0r ~/.vim/templates/%:e
 augroup BufNewFileFromTemplate
 
 "auto compile coffeescript files on save
-au BufWritePost *.coffee silent CoffeeMake! -b | cwindow 2 | redraw!
+au BufWritePost *.coffee silent CoffeeMake! | cwindow 2 | redraw!
 
 "auto gofmt go files on save
 if executable('gofmtwrapper')
@@ -284,7 +284,7 @@ imap ,/ </<C-X><C-O>
 au VimResized * exe "normal! \<c-w>="
 
 " Destroy infuriating keys
-nnoremap K <nop> " manual key
+nnoremap K <nop>
 
 " Show tabs with an arrow
 set list
