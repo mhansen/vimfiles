@@ -25,7 +25,7 @@ Bundle 'nginx.vim'
 Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 Bundle 'skammer/vim-css-color'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-foreplay'
@@ -145,7 +145,7 @@ set statusline+=%*
 set statusline+=%#warningmsg#
 "display a warning if file encoding isnt utf-8
 set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
-set statusline+=%{SyntasticStatuslineFlag()} " Syntastic errors.
+"set statusline+=%{SyntasticStatuslineFlag()} " Syntastic errors.
 set statusline+=%*
 
 set statusline+=%h      "help file flag
@@ -331,9 +331,8 @@ set autoread
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Syntastic options
-let g:syntastic_auto_loc_list=0
-let g:syntastic_quiet_warnings=0
-let g:syntastic_disabled_filetypes = ['html', 'js']
+"let g:syntastic_auto_loc_list=0
+"let g:syntastic_disabled_filetypes = ['html', 'js']
 
 :nnoremap <Leader>sp :set invpaste<CR>
 
