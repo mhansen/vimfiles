@@ -29,16 +29,17 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'skammer/vim-css-color'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-foreplay'
-Bundle 'tpope/vim-fugitive'
+"Bundle 'tpope/vim-fugitive' disabled due to slow startup in network dirs
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-liquid'
 Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-repeat'
+"Bundle 'tpope/vim-rails' disabled due to slow startup
+"Bundle 'tpope/vim-rake' disabled due to slow startup
 
 call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+"call pathogen#helptags() disabled due to slow startup. run manually instead.
+
 "Note that you need to invoke the pathogen functions before invoking "filetype
 "plugin indent on" if you want it to load ftdetect files. On Debian (and
 "probably other distros), the system vimrc does this early on, so you actually
@@ -109,12 +110,6 @@ nmap <Leader>.s :source $MYVIMRC<CR>
 "NERDTree
 nmap <Leader>nt :NERDTreeToggle<CR>
 
-"FuGitIve Shortcuts
-nmap <Leader>gs :Gstatus<CR>
-nmap <Leader>gc :Gcommit<CR>
-nmap <Leader>gw :Gwrite<CR>
-nmap <Leader>gb :Gbrowse<CR>
-
 nmap <Leader>r :redraw!<CR>
 nmap <Leader>du :diffupdate<CR>
 
@@ -157,9 +152,6 @@ set statusline+=%m      "modified flag
 set statusline+=%#error#
 set statusline+=%{&paste?'[paste]':''}
 set statusline+=%*
-
-"git
-set statusline+=%{fugitive#statusline()}
 
 set statusline+=%=      "left/right separator
 set statusline+=%l/%L   "cursor line/total lines
