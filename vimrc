@@ -27,15 +27,16 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdcommenter'
 "Bundle 'scrooloose/syntastic'
 Bundle 'skammer/vim-css-color'
+Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-foreplay'
 "Bundle 'tpope/vim-fugitive' disabled due to slow startup in network dirs
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-liquid'
 Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-repeat'
 "Bundle 'tpope/vim-rails' disabled due to slow startup
 "Bundle 'tpope/vim-rake' disabled due to slow startup
+Bundle 'tpope/vim-repeat'
 
 call pathogen#runtime_append_all_bundles()
 "call pathogen#helptags() disabled due to slow startup. run manually instead.
