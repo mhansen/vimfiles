@@ -25,19 +25,21 @@ Bundle 'nginx.vim'
 Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
+Bundle 'skammer/vim-css-color'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-foreplay'
-Bundle 'tpope/vim-fugitive'
+"Bundle 'tpope/vim-fugitive' disabled due to slow startup in network dirs
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-liquid'
 Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-repeat'
+"Bundle 'tpope/vim-rails' disabled due to slow startup
+"Bundle 'tpope/vim-rake' disabled due to slow startup
 
 call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+"call pathogen#helptags() disabled due to slow startup. run manually instead.
+
 "Note that you need to invoke the pathogen functions before invoking "filetype
 "plugin indent on" if you want it to load ftdetect files. On Debian (and
 "probably other distros), the system vimrc does this early on, so you actually
@@ -55,7 +57,7 @@ nnoremap k gk
 "debian/ubuntu call ack 'ack-grep' and set some bad options
 "for quickfixing. we need to override these
 "this is used for the :Ack bundle
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+let g:ackprg="~/bin/ack --nocolor --nogroup --column"
 
 " ':' is crazy hard to type, you have to hold down shift and stuff.
 " space isn't doing anything useful in normal mode, lets remap it to ':'!
@@ -108,12 +110,6 @@ nmap <Leader>.s :source $MYVIMRC<CR>
 "NERDTree
 nmap <Leader>nt :NERDTreeToggle<CR>
 
-"FuGitIve Shortcuts
-nmap <Leader>gs :Gstatus<CR>
-nmap <Leader>gc :Gcommit<CR>
-nmap <Leader>gw :Gwrite<CR>
-nmap <Leader>gb :Gbrowse<CR>
-
 nmap <Leader>r :redraw!<CR>
 nmap <Leader>du :diffupdate<CR>
 
@@ -144,7 +140,7 @@ set statusline+=%*
 set statusline+=%#warningmsg#
 "display a warning if file encoding isnt utf-8
 set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
-set statusline+=%{SyntasticStatuslineFlag()} " Syntastic errors.
+"set statusline+=%{SyntasticStatuslineFlag()} " Syntastic errors.
 set statusline+=%*
 
 set statusline+=%h      "help file flag
@@ -156,9 +152,6 @@ set statusline+=%m      "modified flag
 set statusline+=%#error#
 set statusline+=%{&paste?'[paste]':''}
 set statusline+=%*
-
-"git
-set statusline+=%{fugitive#statusline()}
 
 set statusline+=%=      "left/right separator
 set statusline+=%l/%L   "cursor line/total lines
@@ -327,9 +320,8 @@ set autoread
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Syntastic options
-let g:syntastic_auto_loc_list=0
-let g:syntastic_quiet_warnings=0
-let g:syntastic_disabled_filetypes = ['html', 'js']
+"let g:syntastic_auto_loc_list=0
+"let g:syntastic_disabled_filetypes = ['html', 'js']
 
 :nnoremap <Leader>sp :set invpaste<CR>
 
@@ -356,3 +348,4 @@ inoremap jj <Esc>
 
 autocmd BufNewFile,BufRead *.json set ft=javascript
 autocmd BufRead,BufNewFile *.watchr set ft=ruby
+set autoread
