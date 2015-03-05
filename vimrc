@@ -26,7 +26,6 @@ Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
-Bundle 'skammer/vim-css-color'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-foreplay'
 Bundle 'tpope/vim-fugitive'
@@ -273,9 +272,6 @@ au!
 autocmd BufNewFile * silent! 0r ~/.vim/templates/%:e
 augroup BufNewFileFromTemplate
 
-"auto compile coffeescript files on save
-au BufWritePost *.coffee silent CoffeeMake! | cwindow 2 | redraw!
-
 "auto gofmt go files on save
 if executable('gofmtwrapper')
     autocmd BufRead,BufWrite *.go
@@ -292,13 +288,13 @@ endif
 function! HamlMake()
     py << ENDOFPYTHON
 import os
+import subprocess
 import vim
 
 in_file = vim.current.buffer.name
-dirname = os.path.dirname(in_file)
-if os.path.exists(dirname + "/.autohaml"):
+if os.path.exists(os.path.dirname(in_file) + "/.autohaml"):
     out_file = in_file[0:-5] + ".html"
-    os.system("haml %s %s" % (in_file, out_file))
+    subprocess.call(["haml", in_file, out_file])
 
 ENDOFPYTHON
 endfunction
