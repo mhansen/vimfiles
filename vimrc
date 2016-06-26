@@ -12,6 +12,7 @@ call vundle#rc()
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
+Bundle 'nathangrigg/vim-beancount'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'ervandew/supertab'
 Bundle 'ihacklog/HiCursorWords'
