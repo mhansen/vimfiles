@@ -315,7 +315,10 @@ set autoread
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Syntastic options
-"let g:syntastic_auto_loc_list=0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 "let g:syntastic_disabled_filetypes = ['html', 'js']
 
 :nnoremap <Leader>sp :set invpaste<CR>
