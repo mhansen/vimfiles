@@ -1,44 +1,35 @@
-"Initialize bundles in .vim/bundle.
 filetype off
 
 "Use vim settings, rather than vi settings
 "must be first, because it changes other options as a side effect
-if &compatible
-  set nocompatible
-endif
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set nocompatible
+
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
-Bundle 'nathangrigg/vim-beancount'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'ervandew/supertab'
-Bundle 'ihacklog/HiCursorWords'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'kien/ctrlp.vim'
-Bundle 'ledger/vim-ledger'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'matchit.zip'
-Bundle 'mileszs/ack.vim'
-Bundle 'nginx.vim'
-Bundle 'othree/html5.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'fatih/vim-go'
-"Bundle 'scrooloose/syntastic'
-Bundle 'skammer/vim-css-color'
-Bundle 'tpope/vim-dispatch'
-Bundle 'vim-scripts/Vim-R-plugin'
+Plugin 'nathangrigg/vim-beancount'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'ervandew/supertab'
+Plugin 'ihacklog/HiCursorWords'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'kien/ctrlp.vim'
+Plugin 'ledger/vim-ledger'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'matchit.zip'
+Plugin 'mileszs/ack.vim'
+Plugin 'nginx.vim'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'fatih/vim-go'
+Plugin 'skammer/vim-css-color'
+Plugin 'tpope/vim-dispatch'
+Plugin 'jalvesaq/Nvim-R'
 
-call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags() disabled due to slow startup. run manually instead.
-
-"Note that you need to invoke the pathogen functions before invoking "filetype
-"plugin indent on" if you want it to load ftdetect files. On Debian (and
-"probably other distros), the system vimrc does this early on, so you actually
-"need to 'filetype off' before 'filetype plugin indent on' to force reloading.
+call vundle#end()
 filetype plugin indent on
 
 "syntax highlighting, probably the most important setting here
