@@ -10,10 +10,10 @@ call vundle#begin()
 " let Vundle manage Vundle
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'rust-lang/rust.vim'
 Plugin 'nathangrigg/vim-beancount'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'ervandew/supertab'
-Plugin 'ihacklog/HiCursorWords'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ledger/vim-ledger'
@@ -27,6 +27,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'fatih/vim-go'
 Plugin 'skammer/vim-css-color'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-fugitive'
 Plugin 'jalvesaq/Nvim-R'
 
 call vundle#end()
@@ -43,7 +44,7 @@ nnoremap k gk
 "debian/ubuntu call ack 'ack-grep' and set some bad options
 "for quickfixing. we need to override these
 "this is used for the :Ack bundle
-let g:ackprg="~/bin/ack --nocolor --nogroup --column"
+"let g:ackprg="~/bin/ack --nocolor --nogroup --column"
 
 " ':' is crazy hard to type, you have to hold down shift and stuff.
 " space isn't doing anything useful in normal mode, lets remap it to ':'!
@@ -291,10 +292,6 @@ au VimResized * exe "normal! \<c-w>="
 " Destroy infuriating keys
 nnoremap K <nop>
 
-" Show tabs with an arrow
-set list
-set listchars=tab:▸\
-
 " Auto write files when you leave the buffer
 set autowrite
 
@@ -339,3 +336,10 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 autocmd BufRead,BufNewFile *.watchr set ft=ruby
 set autoread
 let vimrplugin_assign = 0
+
+"ledger
+let g:ledger_bin = 'hledger'
+au FileType ledger inoremap <silent> <Tab> <C-r>=ledger#autocomplete_and_align()<CR>
+au FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
+let g:ledger_fold_blanks = 1
+set nofoldenable
