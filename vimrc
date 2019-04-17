@@ -50,17 +50,6 @@ nnoremap k gk
 " space isn't doing anything useful in normal mode, lets remap it to ':'!
 nnoremap <space> :
 
-function! RunShebang()
-    if (match(getline(1),'^\#!') == 0)
-        :!chmod +x % && ./%
-    elseif (match(getline(1),'^<!') == 0) "match like <!doctype
-        :!google-chrome ./%
-    else
-        echo "No shebang in this file"
-    endif
-endfunction
-map <F5> :call RunShebang()<CR>
-
 "forgot sudo when editing a file that you dont have access to?
 "no worries! use :w!! and we'll sort it out
 cmap w!! w !sudo tee % >/dev/null
@@ -68,7 +57,6 @@ cmap w!! w !sudo tee % >/dev/null
 "change the terminals title for gui toolkits
 set title
 
-"It's 2011. There's only one encoding, and that's utf-8.
 set encoding=utf-8
 
 "Use bash not sh for advanced features like color.
@@ -85,17 +73,9 @@ nmap <bs> <C-t>
 "Leader key for all sorts of custom mappings
 let mapleader = ","
 
-"Don't bug me with an error if I don't have ruby and I try to use Cmd-T
-if has('ruby')
-    nmap <Leader>e :CommandT<CR>
-end
-
 "quick .vimrc editing
 nmap <Leader>.e :edit ~/.vim/vimrc<CR>
 nmap <Leader>.s :source $MYVIMRC<CR>
-
-"NERDTree
-nmap <Leader>nt :NERDTreeToggle<CR>
 
 nmap <Leader>r :redraw!<CR>
 nmap <Leader>du :diffupdate<CR>
@@ -251,16 +231,6 @@ augroup BufNewFileFromTemplate
 au!
 autocmd BufNewFile * silent! 0r ~/.vim/templates/%:e
 augroup BufNewFileFromTemplate
-
-"auto gofmt go files on save
-if executable('gofmtwrapper')
-    autocmd BufRead,BufWrite *.go
-        \ execute 'normal mx' |
-        \ execute 'silent %!gofmtwrapper' |
-        \ execute 'normal `x'
-    autocmd Filetype go set formatprg=gofmtwrapper
-endif
-
 
 "auto compile markdown files on save
 "autocmd BufWritePost,FileWritePost *.markdown :silent !markdown <afile> > <afile>.html
