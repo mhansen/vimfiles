@@ -1,8 +1,7 @@
-filetype off
-
 "Use vim settings, rather than vi settings
 "must be first, because it changes other options as a side effect
 set nocompatible
+filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
@@ -12,21 +11,14 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'rust-lang/rust.vim'
 Plugin 'nathangrigg/vim-beancount'
-Plugin 'derekwyatt/vim-scala'
 Plugin 'ervandew/supertab'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ledger/vim-ledger'
-Plugin 'Lokaltog/vim-easymotion'
 Plugin 'matchit.zip'
-Plugin 'mileszs/ack.vim'
 Plugin 'nginx.vim'
-Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'fatih/vim-go'
-Plugin 'skammer/vim-css-color'
-Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'jalvesaq/Nvim-R'
 
