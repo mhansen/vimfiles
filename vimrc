@@ -209,7 +209,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 let g:ctrlp_max_files = 100000
 
-autocmd BufNewFile,BufRead *.json set ft=javascript
 autocmd BufRead,BufNewFile *.watchr set ft=ruby
 set autoread
 let vimrplugin_assign = 0
