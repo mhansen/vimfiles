@@ -197,10 +197,6 @@ endif
 "I always fat finger :W instead of :w
 command! W w
 
-"Close html tags quickly with ,/
-"http://stackoverflow.com/questions/130734/how-can-one-close-html-tags-in-vim-quickly/532656#532656
-imap ,/ </<C-X><C-O>
-
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
