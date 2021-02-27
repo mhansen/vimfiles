@@ -61,11 +61,6 @@ nmap <Leader>.s :source $MYVIMRC<CR>
 
 nmap <Leader>r :redraw!<CR>
 nmap <Leader>du :diffupdate<CR>
-
-"Toggle Numbering lines
-map <F12> :set number!<CR>
-
-map <F1> :set invpaste<CR>
 map <Leader>hs :lclose<CR>
 
 "======== End Keyboard Shortcuts ========"
