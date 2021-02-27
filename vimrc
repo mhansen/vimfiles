@@ -209,16 +209,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 let g:ctrlp_max_files = 100000
 
-" Strip trailing whitespace (,ss)
-function! StripWhitespace ()
-  let save_cursor = getpos(".")
-  let old_query = getreg('/')
-  :%s/\s\+$//e
-  call setpos('.', save_cursor)
-  call setreg('/', old_query)
-endfunction
-noremap <leader>ss :call StripWhitespace ()<CR>
-
 inoremap jj <Esc>
 
 autocmd BufNewFile,BufRead *.json set ft=javascript
