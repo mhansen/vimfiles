@@ -16,6 +16,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-fugitive'
 Plug 'jalvesaq/Nvim-R'
+Plug 'vim-scripts/Wombat'
 Plug 'vim-scripts/wombat256.vim'
 
 call plug#end()
