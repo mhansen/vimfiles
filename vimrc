@@ -161,10 +161,6 @@ set wildmode=list:longest
 "Scroll when I get three lines from the top or bottom of the screen.
 set scrolloff=3
 
-"Ruby: parse the entire buffer to add a list of classes to autocompletion
-"results
-let g:rubycomplete_classes_in_global = 1
-
 "gvim
 if has('gui_running')
     set guioptions-=T "no toolbar
