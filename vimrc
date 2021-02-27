@@ -3,26 +3,21 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
+call plug#begin()
 
-" let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'nathangrigg/vim-beancount'
+Plug 'ervandew/supertab'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ledger/vim-ledger'
+Plug 'vim-scripts/matchit.zip'
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdcommenter'
+Plug 'fatih/vim-go'
+Plug 'tpope/vim-fugitive'
+Plug 'jalvesaq/Nvim-R'
 
-Plugin 'rust-lang/rust.vim'
-Plugin 'nathangrigg/vim-beancount'
-Plugin 'ervandew/supertab'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'ledger/vim-ledger'
-Plugin 'matchit.zip'
-Plugin 'nginx.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'fatih/vim-go'
-Plugin 'tpope/vim-fugitive'
-Plugin 'jalvesaq/Nvim-R'
-
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 
 "syntax highlighting, probably the most important setting here
