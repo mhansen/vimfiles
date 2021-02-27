@@ -28,13 +28,8 @@ syntax on
 nnoremap j gj
 nnoremap k gk
 
-"debian/ubuntu call ack 'ack-grep' and set some bad options
-"for quickfixing. we need to override these
-"this is used for the :Ack bundle
-"let g:ackprg="~/bin/ack --nocolor --nogroup --column"
-
-" ':' is crazy hard to type, you have to hold down shift and stuff.
-" space isn't doing anything useful in normal mode, lets remap it to ':'!
+" ':' is hard to type, you have to hold down shift.
+" space isn't doing much useful in normal mode, lets remap it to ':'!
 nnoremap <space> :
 
 "forgot sudo when editing a file that you dont have access to?
