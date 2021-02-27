@@ -180,12 +180,6 @@ let g:SuperTabContextDefaultCompletionType = '<c-o>'
 let g:SuperTabRetainCompletionDuration = 'session'
 let g:SuperTabLongestHighlight = 1
 
-" Accordion style user-interface: vertically expand the window you move into
-map <C-j> <C-w>j<C-w>_
-map <C-k> <C-w>k<C-w>_
-map <C-h> <C-w>h<C-w>_
-map <C-l> <C-w>l<C-w>_
-
 if version >= 703
     "store undo changes even after you close the file
     set undofile
