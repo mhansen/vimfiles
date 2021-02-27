@@ -94,7 +94,6 @@ set statusline+=%*
 set statusline+=%#warningmsg#
 "display a warning if file encoding isnt utf-8
 set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
-"set statusline+=%{SyntasticStatuslineFlag()} " Syntastic errors.
 set statusline+=%*
 
 set statusline+=%h      "help file flag
@@ -258,13 +257,6 @@ set autoread
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
-
-"Syntastic options
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_disabled_filetypes = ['html', 'js']
 
 :nnoremap <Leader>sp :set invpaste<CR>
 
