@@ -200,9 +200,6 @@ command! W w
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
-" Destroy infuriating keys
-nnoremap K <nop>
-
 " Auto write files when you leave the buffer
 set autowrite
 
