@@ -209,8 +209,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 let g:ctrlp_max_files = 100000
 
-inoremap jj <Esc>
-
 autocmd BufNewFile,BufRead *.json set ft=javascript
 autocmd BufRead,BufNewFile *.watchr set ft=ruby
 set autoread
