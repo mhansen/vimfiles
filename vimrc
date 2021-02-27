@@ -197,12 +197,6 @@ endif
 "I always fat finger :W instead of :w
 command! W w
 
-"Start python files with boilerplate done
-augroup BufNewFileFromTemplate
-au!
-autocmd BufNewFile * silent! 0r ~/.vim/templates/%:e
-augroup BufNewFileFromTemplate
-
 "Close html tags quickly with ,/
 "http://stackoverflow.com/questions/130734/how-can-one-close-html-tags-in-vim-quickly/532656#532656
 imap ,/ </<C-X><C-O>
