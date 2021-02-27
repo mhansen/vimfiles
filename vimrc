@@ -16,6 +16,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-fugitive'
 Plug 'jalvesaq/Nvim-R'
+Plug 'vim-scripts/wombat256.vim'
 
 call plug#end()
 filetype plugin indent on
@@ -107,7 +108,7 @@ set linebreak "wrap lines at convenient points
 
 "Give me higher color depth
 set t_Co=256
-colorscheme wombat
+colorscheme wombat256mod
 if &term == "linux"
     "Old-school console, like you get with Ctrl-Alt-F1. No higher color
     "support.
@@ -183,10 +184,6 @@ if version >= 703
     set undolevels=1000
     "Maximum number lines to save for undo on a buffer reload.
     set undoreload=10000
-    "Remind me not to make long lines with a subtle column of gray on the
-    "right.
-    set colorcolumn=+1,+2,+3,+4,+5,+6,+7,+8,+9,+10
-    hi ColorColumn ctermbg=darkgray
 endif
 
 "I always fat finger :W instead of :w
