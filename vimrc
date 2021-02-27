@@ -262,13 +262,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 let g:ctrlp_max_files = 100000
 
-" You know, I almost never want to delete-and-replace the current line
-" So I almost never use the S command (and cc is quicker to type anyway)
-" On the other hand, I’m forever using :%s/pattern/replacement/g
-" So I optimized my workflow:
-nmap S :%s//g<LEFT><LEFT>
-vmap S :s//g<LEFT><LEFT>
-
 " Strip trailing whitespace (,ss)
 function! StripWhitespace ()
   let save_cursor = getpos(".")
