@@ -7,7 +7,7 @@ call plug#begin()
 
 Plug 'rust-lang/rust.vim'
 Plug 'nathangrigg/vim-beancount'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ledger/vim-ledger'
 Plug 'vim-scripts/matchit.zip'
@@ -18,6 +18,18 @@ Plug 'tpope/vim-fugitive'
 Plug 'jalvesaq/Nvim-R'
 Plug 'vim-scripts/Wombat'
 Plug 'vim-scripts/wombat256.vim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	Plug 'deoplete-plugins/deoplete-lsp'
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'ionide/Ionide-vim', {
+        \ 'do':  'make fsautocomplete',
+      \}
+
 
 call plug#end()
 filetype plugin indent on
