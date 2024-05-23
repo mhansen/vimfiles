@@ -5,6 +5,7 @@ filetype off
 
 call plug#begin()
 
+Plug 'editorconfig/editorconfig-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'nathangrigg/vim-beancount'
 "Plug 'ervandew/supertab'
