@@ -1,0 +1,7 @@
+{
+    "files.autoSave": "afterDelay",
+    "git.confirmSync": false,
+    "go.toolsManagement.autoUpdate": true,
+    "git.enableSmartCommit": true,
+    "update.showReleaseNotes": false
+}
